@@ -35,7 +35,7 @@ cd src/scripts
 ./test_add_marker.sh
 ```
 
-Terminal 4
+Terminal 5
 ```
 source devel/setup.bash
 cd src/scripts
