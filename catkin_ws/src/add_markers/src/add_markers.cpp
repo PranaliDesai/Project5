@@ -3,10 +3,10 @@
 #include <nav_msgs/Odometry.h>
 #include <math.h>
 
-double pickupPosX = 1.0;
-double pickupPosY = 0.0;
-double dropoffPosX = 1.0;
-double dropoffPosY = 1.0;
+double pickupPosX = -6.0;
+double pickupPosY =  0.0;
+double dropoffPosX = 6.0;
+double dropoffPosY = 0.0;
 bool pickedup = false;
 float x_pos = 0.0, y_pos = 0.0;
 
@@ -65,7 +65,7 @@ int main( int argc, char** argv )
   while (ros::ok())
   {
 
-    //while (marker_pub.getNumSubscribers() < 1)
+    while (marker_pub.getNumSubscribers() < 1)
     {
       if (!ros::ok())
       {
@@ -82,12 +82,14 @@ int main( int argc, char** argv )
     ROS_INFO("Odom data: %f, %f", x_pos, y_pos);
 
     if ((fabs(pickupPosX -x_pos) <  0.5 ) && (fabs(pickupPosY - y_pos) < 0.5)){
+      ros::Duration(5.0).sleep();
       marker.action = visualization_msgs::Marker::DELETE;
       marker_pub.publish(marker);
       pickedup = true;
     }
 
     if ((pickedup == true) && (fabs(dropoffPosX -x_pos) <  0.5 ) && (fabs(dropoffPosY - y_pos) < 0.5)){
+      ros::Duration(5.0).sleep();
       marker.pose.position.x = dropoffPosX;
       marker.pose.position.y = dropoffPosY;
       marker.action = visualization_msgs::Marker::ADD;

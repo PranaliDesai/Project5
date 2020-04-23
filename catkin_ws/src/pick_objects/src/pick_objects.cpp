@@ -23,7 +23,7 @@ int main(int argc, char** argv){
   goal.target_pose.header.frame_id = "map";
   goal.target_pose.header.stamp = ros::Time::now();
 
-  float goals[2][3] = { {1.0, 0, 1.0}, {1.0, 1.0 , 1.0}  };
+  float goals[2][3] = { {-6.0, 0.0, 1.57}, {6.0, 0.0 , 1.57}  };
   for (int i =0; i< 2; i++){
   // Define a position and orientation for the robot to reach
   goal.target_pose.pose.position.x = goals[i][0];
@@ -37,14 +37,14 @@ int main(int argc, char** argv){
   // Wait an infinite time for the results
   ac.waitForResult();
 
-  // Check if the robot reached its goal
-  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-      ROS_INFO("Hooray, Goal reached");
-  else
-      ROS_INFO("The base failed to move forward");
+
   ros::Duration(5.0).sleep();    
   }
-
+    // Check if the robot reached its goal
+  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+      ROS_INFO("Hooray, reached drop off zone");
+  else
+      ROS_INFO("The base failed to move forward");
 
   return 0;
 }
