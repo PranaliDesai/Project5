@@ -14,3 +14,30 @@ cd src/scripts
 ./test_slam.sh
 ```
 
+Terminal 2
+```
+source devel/setup.bash
+cd src/scripts
+./test_navigation.sh
+```
+
+Terminal 3
+```
+source devel/setup.bash
+cd src/scripts
+./test_pick_objects.sh
+```
+
+Terminal 4
+```
+source devel/setup.bash
+cd src/scripts
+./test_add_marker.sh
+```
+
+Terminal 4
+```
+source devel/setup.bash
+cd src/scripts
+./test_home_service.sh
+```
