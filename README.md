@@ -1,5 +1,11 @@
 # Project5_Home_Service_Robot
 
+To clone
+```
+git clone --recurse-submodules https://github.com/PranaliDesai/Project5.git
+
+```
+
 To build
 ```
 cd catkin_ws
